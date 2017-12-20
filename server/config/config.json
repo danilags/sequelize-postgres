@@ -9,9 +9,9 @@
   "test": {
     "username": "danilags",
     "password": "daniel123",
-    "database": "todos-dev",
+    "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "production": {
     "username": "root",
