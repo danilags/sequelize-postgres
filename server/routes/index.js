@@ -8,9 +8,11 @@ module.exports = (app) => {
     });
   })
 
-  app.get('/api/todos', todosController.list);
+  app.get('/api/todos', todosController.listTodo);
 
   app.post('/api/todos', todosController.create);
 
   app.post('/api/todos/:todoId/items', todoItemsController.create);
+
+  app.put('/api/todos/:todoId', todosController.update);
 }

@@ -12,7 +12,7 @@ module.exports = {
   },
   listTodo(req, res) {
     return Todo
-      .all()
+      .findAll()
       .then(todos => res.status(200).send({
         data: todos,
         message: 'List of todos'
@@ -36,5 +36,24 @@ module.exports = {
       .catch(error => {
         res.send(error)
       });
+  },
+  update(req, res) {
+    return Todo
+      .findById(req.params.todoId)
+      .then((todo) => {
+        if (!todo) {
+          return res.status(404).send({message: 'Todo not Found'})
+        }
+        return todo
+          .update({
+            title: req.body.title || todo.title,
+          })
+          .then(() => res.send(200).send({
+            message: 'Todo updated!',
+            data: listTodo
+          }))
+          .catch((err) => res.status(400).send(error))
+      })
+
   }
 };
